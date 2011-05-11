@@ -48,4 +48,13 @@ public class SheetTest {
         SimpleSheet sheet = new SimpleSheet(2, 2);
         sheet.putCell(new CellIndex(1, "C"), new SimpleCell<ConstantValue<Integer>, Integer>());
     }
+    
+    @Test
+    public void createSheetWithDiffCells() {
+        SimpleSheet sheet = new SimpleSheet(2, 1);
+        sheet.putCell(
+            new CellIndex(1, "A"),
+            new SimpleCell<ConstantValue<Integer>, Integer>("42")
+        );
+    }
 }
