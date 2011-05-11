@@ -1,7 +1,6 @@
 package org.sherman.kproblem;
 
 import org.sherman.kproblem.core.ArithmeticOperation;
-import org.sherman.kproblem.core.ConstantValue;
 import org.sherman.kproblem.core.OpType;
 import org.testng.annotations.Test;
 
