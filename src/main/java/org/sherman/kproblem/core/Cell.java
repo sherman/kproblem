@@ -1,5 +1,5 @@
 package org.sherman.kproblem.core;
 
-public interface Cell {
-    
+public interface Cell<V> {
+    V getValue();
 }

@@ -10,38 +10,38 @@ public class SheetTest {
     public void createSheet() {
         SimpleSheet sheet = new SimpleSheet(2, 2);
     }
-    
+
     @Test
     public void checkRowBounds() {
         SimpleSheet sheet = new SimpleSheet(2, 2);
         sheet.putCell(new CellIndex(2, "A"), new SimpleCell());
     }
-    
-    @Test(expectedExceptions=IllegalArgumentException.class)
+
+    @Test(expectedExceptions = IllegalArgumentException.class)
     public void checkRowTopBound() {
         SimpleSheet sheet = new SimpleSheet(2, 2);
         sheet.putCell(new CellIndex(3, "A"), new SimpleCell());
     }
-    
-    @Test(expectedExceptions=IllegalArgumentException.class)
+
+    @Test(expectedExceptions = IllegalArgumentException.class)
     public void checkBottomTopBound() {
         SimpleSheet sheet = new SimpleSheet(2, 2);
         sheet.putCell(new CellIndex(0, "A"), new SimpleCell());
     }
-    
+
     @Test
     public void checkColumnBounds() {
         SimpleSheet sheet = new SimpleSheet(2, 2);
         sheet.putCell(new CellIndex(2, "A"), new SimpleCell());
     }
-    
-    @Test(expectedExceptions=IllegalArgumentException.class)
+
+    @Test(expectedExceptions = IllegalArgumentException.class)
     public void checkColumnBottomBound() {
         SimpleSheet sheet = new SimpleSheet(2, 2);
         sheet.putCell(new CellIndex(1, "0"), new SimpleCell());
     }
-    
-    @Test(expectedExceptions=IllegalArgumentException.class)
+
+    @Test(expectedExceptions = IllegalArgumentException.class)
     public void checkColumnTopBound() {
         SimpleSheet sheet = new SimpleSheet(2, 2);
         sheet.putCell(new CellIndex(1, "C"), new SimpleCell());
