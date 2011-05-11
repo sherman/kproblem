@@ -1,4 +1,4 @@
-package org.sherman.kproblem;
+package org.sherman.kproblem.test;
 
 import org.sherman.kproblem.core.ArithmeticOperation;
 import org.sherman.kproblem.core.OpType;

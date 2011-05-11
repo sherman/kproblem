@@ -1,4 +1,4 @@
-package org.sherman.kproblem;
+package org.sherman.kproblem.test;
 
 import org.sherman.kproblem.core.ConstantValue;
 import org.testng.annotations.Test;

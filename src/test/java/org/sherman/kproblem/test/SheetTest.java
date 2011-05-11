@@ -1,8 +1,7 @@
-package org.sherman.kproblem;
+package org.sherman.kproblem.test;
 
 import org.sherman.kproblem.core.CellIndex;
 import org.sherman.kproblem.core.ConstantValue;
-import org.sherman.kproblem.core.EvaluationStrategy;
 import org.sherman.kproblem.core.SimpleCell;
 import org.sherman.kproblem.core.SimpleSheet;
 import org.testng.annotations.Test;
