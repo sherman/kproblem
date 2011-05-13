@@ -6,6 +6,35 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>KProblem</name>
 
+	<!-- scala repo -->
+	<pluginRepositories>
+		<pluginRepository>
+			<id>scala</id>
+			<name>Scala Tools</name>
+			<url>http://scala-tools.org/repo-releases/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+	
+	<repositories>
+	    <repository>
+	        <id>scala</id>
+	        <name>Scala Tools</name>
+	        <url>http://scala-tools.org/repo-releases/</url>
+	        <releases>
+	            <enabled>true</enabled>
+	        </releases>
+	        <snapshots>
+	            <enabled>false</enabled>
+	        </snapshots>
+	    </repository>
+	</repositories>
+
 	<dependencies>
 		<dependency>
 			<groupId>log4j</groupId>
@@ -20,6 +49,12 @@
 			<version>6.0</version>
 			<type>jar</type>
 			<scope>compile</scope>
+		</dependency>
+		
+		<dependency>
+    		<groupId>org.scala-lang</groupId>
+    		<artifactId>scala-library</artifactId>
+    		<version>2.9.0</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -41,6 +76,20 @@
 						<include>**/*Test.java</include>
 					</includes>
 				</configuration>
+			</plugin>
+			
+			<!-- scala stuff -->
+			<plugin>
+				<groupId>org.scala-tools</groupId>
+				<artifactId>maven-scala-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile</goal>
+							<goal>testCompile</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
