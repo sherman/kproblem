@@ -36,6 +36,7 @@ object Parser extends RegexParsers {
     def parse(in:String):Int = {
         parseAll(expression, in) match {
             case Success(p:Expression, _) => p.eval
+            case Success(p:ExpressionString, _) => 42 // fixme 
             case e: NoSuccess =>
                 throw new IllegalArgumentException("Bad syntax: "+ in)
         }

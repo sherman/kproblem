@@ -25,22 +25,6 @@ package org.sherman.kproblem.parser;
         def eval():Int = a.eval / b.eval
     }
     
-    /*case class ExpressionAdd(a:List[Expression]) extends Expression {
-        def eval():Int = a.foldLeft(0)(_ + _.eval)
-    }*/
-    
-    /*case class ExpressionSub(a:List[Expression]) extends Expression {
-        def eval():Int = a.foldLeft(0)(_ - _.eval)
-    }*/
-    
-    /*case class ExpressionMul(a:List[Expression]) extends Expression {
-        def eval():Int = a.foldLeft(0)(_ * _.eval)
-    }*/
-    
-    /*case class ExpressionDiv(a:List[Expression]) extends Expression {
-         def eval():Int = a.foldLeft(0)(_ / _.eval)
-    }*/
-    
     case class ExpressionString(a:String)/* extends Expression*/ {
         def eval():String = a
     }
