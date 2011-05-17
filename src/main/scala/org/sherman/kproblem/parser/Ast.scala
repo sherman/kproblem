@@ -1,6 +1,5 @@
 package org.sherman.kproblem.parser;
 
-    // FIXME: actually Expression must return EvaluationStrategy(see java code)
     sealed abstract class Expression {
         def eval():Int
     }
