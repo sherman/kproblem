@@ -4,9 +4,7 @@ import scala.util.parsing.input.StreamReader
 import scala.util.parsing.combinator._
 import scala.util.parsing.combinator.lexical
 import scala.util.matching.Regex
-import org.sherman.kproblem.core._
-import org.sherman.kproblem.core.EvaluationStrategy
-import _root_.org.sherman.kproblem.core._;
+import _root_.org.sherman.kproblem.core._
 
 object Parser extends RegexParsers {
     val binaryOps:Map[String, (Expression, Expression) => Expression] = Map(
@@ -38,7 +36,7 @@ object Parser extends RegexParsers {
     def parse(in:String):EvaluationStrategy[_] = {
         parseAll(expression, in) match {
             case Success(p:Expression, _) => new ConstantValue[Int](p.eval)
-            case Success(p:ExpressionString, _) => new ConstantValue[String](p.eval) 
+            case Success(p:ExpressionString, _) => new ConstantValue[String](p.eval.substring(1)) 
             case e: NoSuccess =>
                 throw new IllegalArgumentException("Bad syntax: "+ in)
         }
