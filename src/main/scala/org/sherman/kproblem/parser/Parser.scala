@@ -1,9 +1,9 @@
 package org.sherman.kproblem.parser;
 
 import scala.util.parsing.input.StreamReader
-import scala.util.parsing.combinator._;
-import scala.util.parsing.combinator.lexical;
-import scala.util.matching.Regex;
+import scala.util.parsing.combinator._
+import scala.util.parsing.combinator.lexical
+import scala.util.matching.Regex
 
 object Parser extends RegexParsers {
     def numericLit = """^[0-9]+""".r
