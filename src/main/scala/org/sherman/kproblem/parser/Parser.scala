@@ -6,29 +6,26 @@ import scala.util.parsing.combinator.lexical
 import scala.util.matching.Regex
 
 object Parser extends RegexParsers {
+    val binaryOps:Map[String, (Expression, Expression) => Expression] = Map(
+        "+" -> ExpressionAdd,
+        "-" -> ExpressionSub,
+        "*" -> ExpressionMul,
+        "/" -> ExpressionDiv
+    )
+    
     def numericLit = """^[0-9]+""".r
     def stringLit = """^[:][\p{Print}]+$""".r
+    
+    def fold(a: Expression, l: List[~[String,Expression]]) = l.foldLeft(a){
+        case (a1, op ~ a2) => binaryOps(op)(a1, a2)
+    }
     
     def expression = ( arithOp | value | printableString )
     
     def value = numericLit ^^ { s => ExpressionConst(s.toInt) }
 
-    def arithOp = ( sum | sub | mul | div )
-    
-    def sum = repsep(value, "+") ^^ {
-        a:List[Expression] => ExpressionAdd(a)
-    }
-    
-    def sub = repsep(value, "-") ^^ {
-        a:List[Expression] => ExpressionSub(a)
-    }
-    
-    def mul = repsep(value, "*") ^^ {
-        a:List[Expression] => ExpressionMul(a)
-    }
-    
-    def div = repsep(value, "/") ^^ {
-        a:List[Expression] => ExpressionDiv(a)
+    def arithOp = value ~ rep(("+" | "-" | "*" | "/") ~ value) ^^ {
+        case a ~ l => fold(a, l)
     }
     
     def printableString = stringLit ^^ {
