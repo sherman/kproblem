@@ -32,7 +32,16 @@ object Parser extends RegexParsers {
         case a:String => ExpressionString(a)
     }
     
-    def main(args: Array[String]): Unit = {
+    
+    def parse(in:String):Int = {
+        parseAll(expression, in) match {
+            case Success(p:Expression, _) => p.eval
+            case e: NoSuccess =>
+                throw new IllegalArgumentException("Bad syntax: "+ in)
+        }
+    }
+    
+    def main(args: Array[String]):Unit = {
         println(parseAll(expression, args(0)))
     }
 }
