@@ -47,13 +47,10 @@ public class SheetTest {
         SimpleSheet sheet = new SimpleSheet(2, 2);
         sheet.putCell(new CellIndex(1, "C"), new SimpleCell(null));
     }
-    
+
     @Test
     public void createSheetWithDiffCells() {
         SimpleSheet sheet = new SimpleSheet(2, 1);
-        sheet.putCell(
-            new CellIndex(1, "A"),
-            new SimpleCell(null)
-        );
+        sheet.putCell(new CellIndex(1, "A"), new SimpleCell(null));
     }
 }

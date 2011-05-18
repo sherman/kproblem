@@ -77,7 +77,7 @@ public class SimpleSheet implements Sheet {
         
         while (iter.hasNext()) {
             evaulatedValue +=
-                cells.get(iter.next()).getValue().toString() + "\r\n";
+                cells.get(iter.next()).getValue().toString() + " ";
         }
         
         return evaulatedValue;
