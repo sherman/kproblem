@@ -1,17 +1,10 @@
 package org.sherman.kproblem.core;
 
-public class SimpleCell<T extends EvaluationStrategy<V>, V> implements Cell<T, V> {
-    private T evaluation;
+public class SimpleCell<V> implements Cell<V> {
+    private EvaluationStrategy<V>  evaluation;
     
-    public SimpleCell() {
-    }
-
-    @SuppressWarnings("unchecked")
-    public SimpleCell(String input) {
-        // FIXME: real parser works here, parser creation based on input
-        evaluation =
-            (T) StringToIntParser.create(input).
-            getEvaluation();
+    public SimpleCell(EvaluationStrategy<V> evaluation) {
+        this.evaluation = evaluation;
     }
 
     @Override

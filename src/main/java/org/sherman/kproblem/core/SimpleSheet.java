@@ -18,6 +18,8 @@ public class SimpleSheet implements Sheet {
     private final int rows;
     private final int columns;
     
+    private String evaulatedValue = "";
+    
     public SimpleSheet(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
@@ -68,5 +70,17 @@ public class SimpleSheet implements Sheet {
             
             return true;
         }
+    }
+
+    @Override
+    public String getValue() {
+        Iterator<CellIndex> iter = cells.keySet().iterator();
+        
+        while (iter.hasNext()) {
+            evaulatedValue +=
+                cells.get(iter.next()).getValue().toString() + "\r\n";
+        }
+        
+        return evaulatedValue;
     }
 }

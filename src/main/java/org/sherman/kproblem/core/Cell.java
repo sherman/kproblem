@@ -1,5 +1,5 @@
 package org.sherman.kproblem.core;
 
-public interface Cell<T extends EvaluationStrategy<V>, V> {
+public interface Cell<V> {
     V getValue();
 }
