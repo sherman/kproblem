@@ -23,7 +23,6 @@ public class SimpleSheet implements Sheet {
     public SimpleSheet(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
-        
     }
     
     @Override
