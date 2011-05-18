@@ -1,9 +1,11 @@
 package org.sherman.kproblem.core;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.sherman.kproblem.util.Cells;
 
 public class SimpleSheet implements Sheet {
     private final Logger log = Logger.getLogger(SimpleSheet.class);
@@ -52,11 +54,13 @@ public class SimpleSheet implements Sheet {
             
             int counter = 1;
             
-            for (char letter = 'A'; letter <= 'Z'; letter++) {
+            Iterator<Character> iter = Cells.getNextColumnIndexIterator();
+            
+            while (iter.hasNext()) {
                 if (counter > columns)
                     return true;
                 
-                if (columnIndex == letter)
+                if (columnIndex == iter.next())
                     return false;
                 
                 ++counter;
