@@ -5,6 +5,9 @@ public final class CellIndex {
     private final String column;
     
     public CellIndex(int row, String column) {
+        if (row < 1)
+            throw new IllegalArgumentException("Row index begins from 1.");
+        
         this.row = row;
         this.column = column;
     }
