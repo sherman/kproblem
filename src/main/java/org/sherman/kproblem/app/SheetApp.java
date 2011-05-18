@@ -44,12 +44,7 @@ public class SheetApp {
     }
     
     private static class InputValidator {
-        private static final InputValidator instance = new InputValidator();
         private static String[][] elts;
-        
-        public static InputValidator getInstance() {
-            return instance;
-        }
         
         public static String[][] getElts() {
             return elts;
