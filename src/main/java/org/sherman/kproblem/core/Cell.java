@@ -1,5 +1,8 @@
 package org.sherman.kproblem.core;
 
-public interface Cell<V> {
-    V getValue();
+public interface Cell {
+    /**
+     * String representation of the value
+     */
+    String getValue();
 }

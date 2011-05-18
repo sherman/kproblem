@@ -1,14 +1,14 @@
 package org.sherman.kproblem.core;
 
-public class SimpleCell<V> implements Cell<V> {
-    private EvaluationStrategy<V>  evaluation;
+public class SimpleCell implements Cell {
+    private EvaluationStrategy<?>  evaluation;
     
-    public SimpleCell(EvaluationStrategy<V> evaluation) {
+    public SimpleCell(EvaluationStrategy<?> evaluation) {
         this.evaluation = evaluation;
     }
 
     @Override
-    public V getValue() {
-        return evaluation.getValue();
+    public String getValue() {
+        return evaluation.getValue().toString();
     }
 }

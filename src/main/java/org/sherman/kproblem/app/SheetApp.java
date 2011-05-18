@@ -35,7 +35,7 @@ public class SheetApp {
                     new CellIndex(i + 1, columnIndex.next().toString());
                 
                 EvaluationStrategy<?> eval = Parser.parse(elts[i][j].trim());
-                Cell<?> cell = new SimpleCell(eval);
+                Cell cell = new SimpleCell(eval);
                 sheet.putCell(index, cell);
             }
         }
