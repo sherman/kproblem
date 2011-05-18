@@ -15,7 +15,7 @@ object Parser extends RegexParsers {
     )
     
     def numericLit = """^[0-9]+""".r
-    def stringLit = """^[:][\p{Print}]+$""".r
+    def stringLit = """^[\p{Print}]+$""".r
     
     def fold(a: Expression, l: List[~[String,Expression]]) = l.foldLeft(a){
         case (a1, op ~ a2) => binaryOps(op)(a1, a2)
@@ -29,14 +29,14 @@ object Parser extends RegexParsers {
         case a ~ l => fold(a, l)
     }
     
-    def printableString = stringLit ^^ {
+    def printableString = "'" ~> stringLit ^^ {
         case a:String => ExpressionString(a)
     }
     
     def parse(in:String):EvaluationStrategy[_] = {
         parseAll(expression, in) match {
             case Success(p:Expression, _) => new ConstantValue[Int](p.eval)
-            case Success(p:ExpressionString, _) => new ConstantValue[String](p.eval.substring(1)) 
+            case Success(p:ExpressionString, _) => new ConstantValue[String](p.eval) 
             case e: NoSuccess =>
                 throw new IllegalArgumentException("Bad syntax: "+ in)
         }

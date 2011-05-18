@@ -12,7 +12,7 @@ public class SheetsTest {
         Sheet sheet = Sheets.buildFrom(
             new String[][] {
                 {"2+2", "2"},
-                {":striiiing", "4*5-1/2"}
+                {"'striiiing", "4*5-1/2"}
             }
         );
         
