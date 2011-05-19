@@ -6,10 +6,10 @@ import org.sherman.kproblem.core.Cell;
 import org.sherman.kproblem.core.CellIndex;
 import org.sherman.kproblem.core.EvaluationStrategy;
 import org.sherman.kproblem.core.Sheet;
-import org.sherman.kproblem.core.Sheets;
 import org.sherman.kproblem.core.SimpleCell;
 import org.sherman.kproblem.core.SimpleSheet;
 import org.sherman.kproblem.util.Cells;
+import org.sherman.kproblem.util.Sheets;
 import org.sherman.kproblem.parser.*;;
 
 public class SheetApp {
