@@ -16,10 +16,10 @@ class ParserTest {
     def createExpressions = {
         Array(
             Array(new ConstantValue[Int](2), "2"), 
-            Array(new ConstantValue[Int](4), "2+2"),
-            Array(new ConstantValue[Int](0), "2-2"),
-            Array(new ConstantValue[Int](16), "10-2*2"),
-            Array(new ConstantValue[Int](12), "10/2*2+2"),
+            Array(new ConstantValue[Int](4), "=2+2"),
+            Array(new ConstantValue[Int](0), "=2-2"),
+            Array(new ConstantValue[Int](16), "=10-2*2"),
+            Array(new ConstantValue[Int](12), "=10/2*2+2"),
             Array(new ConstantValue[String]("22+1"), "'22+1")
         )
     }

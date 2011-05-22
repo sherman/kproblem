@@ -25,7 +25,7 @@ object Parser extends RegexParsers {
     
     def value = numericLit ^^ { s => ExpressionConst(s.toInt) }
 
-    def arithOp = value ~ rep(("+" | "-" | "*" | "/") ~ value) ^^ {
+    def arithOp = "=" ~> value ~ rep(("+" | "-" | "*" | "/") ~ value) ^^ {
         case a ~ l => fold(a, l)
     }
     
