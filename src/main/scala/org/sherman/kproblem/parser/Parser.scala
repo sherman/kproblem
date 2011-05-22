@@ -33,10 +33,10 @@ object Parser extends RegexParsers {
         case a:String => ExpressionString(a)
     }
     
-    def parse(in:String):EvaluationStrategy[_] = {
+    def parse(in:String):Expression = {
         parseAll(expression, in) match {
-            case Success(p:Expression, _) => new ConstantValue[Int](p.eval)
-            case Success(p:ExpressionString, _) => new ConstantValue[String](p.eval) 
+            case Success(p:Expression, _) => p
+            //case Success(p:ExpressionString, _) => new ConstantValue[String](p.eval) 
             case e: NoSuccess =>
                 throw new IllegalArgumentException("Bad syntax: "+ in)
         }
