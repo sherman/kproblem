@@ -13,7 +13,7 @@ public class DiGraphTest {
     public void createDiGraph() {
         DiGraph graph = new DiGraph();
         graph.addEdge(new Edge(new Vertex(1), new Vertex(2)));
-        
+
         assertTrue(graph.hasVertex(new Vertex(1)));
         assertTrue(graph.hasVertex(new Vertex(2)));
         assertFalse(graph.hasVertex(new Vertex(3)));

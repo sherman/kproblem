@@ -16,6 +16,18 @@ public class DiGraph {
         edges = new HashMap<Vertex, Set<Vertex>>();
     }
     
+    public Set<Vertex> getVertices() {
+        return vertices;
+    }
+    
+    public Set<Vertex> getAdjacentVerticesOf(Vertex v) {
+        if (edges.containsKey(v)) {
+            return edges.get(v);
+        } else {
+            return new HashSet<Vertex>();
+        }
+    }
+    
     public DiGraph addEdge(Edge e) {
         Vertex from = e.getFrom();
         Vertex to = e.getTo();
