@@ -24,7 +24,7 @@ package org.sherman.kproblem.parser;
         def eval():Int = a.eval / b.eval
     }
     
-    case class ExpressionString(a:String)/* extends Expression*/ {
+    case class ExpressionString(a:String) {
         def eval():String = a
     }
     
