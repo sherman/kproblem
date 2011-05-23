@@ -12,13 +12,13 @@ public class DiGraph {
     private Map<Vertex, Set<Vertex>> edges;
     private int edgesCount;
     
-    public DiGraph(int maxEdges) {
+    public DiGraph() {
         edges = new HashMap<Vertex, Set<Vertex>>();
     }
     
     public DiGraph addEdge(Edge e) {
         Vertex from = e.getFrom();
-        Vertex to = e.getFrom();
+        Vertex to = e.getTo();
         
         addVertex(from).addVertex(to);
         
