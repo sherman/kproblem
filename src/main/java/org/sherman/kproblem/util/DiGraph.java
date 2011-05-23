@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import com.google.common.collect.Multiset;
-import com.google.common.collect.HashMultiset;
 
 public class DiGraph {
     private Set<Vertex> vertices = new HashSet<Vertex>();

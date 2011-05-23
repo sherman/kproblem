@@ -43,6 +43,7 @@
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
@@ -57,14 +58,43 @@
     		<version>2.9.0</version>
 		</dependency>
 		
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>r09</version>
-		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+        		<artifactId>build-helper-maven-plugin</artifactId>
+        		<executions>
+        			<!-- sources -->
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals><goal>add-source</goal></goals>
+						<configuration>
+							<sources>
+								<source>src/main/java</source>
+								<source>src/main/scala</source>
+								<source>src/test/java</source>
+								<source>src/test/scala</source>
+							</sources>
+						</configuration>
+					</execution>
+					<!-- test sources -->
+					<execution>
+						<id>add-test-source</id>
+						<phase>generate-test-sources</phase>
+						<goals>
+							<goal>add-test-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>src/test/java</source>
+								<source>src/test/scala</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -80,6 +110,7 @@
 				<configuration>
 					<includes>
 						<include>**/*Test.java</include>
+						<include>**/*Test.scala</include>
 					</includes>
 				</configuration>
 			</plugin>
