@@ -18,5 +18,6 @@ public class DiGraphTest {
         assertTrue(graph.hasVertex(new Vertex(2)));
         assertFalse(graph.hasVertex(new Vertex(3)));
         assertTrue(graph.hasEdge(new Edge(new Vertex(1), new Vertex(2))));
+        assertFalse(graph.hasEdge(new Edge(new Vertex(1), new Vertex(3))));
     }
 }
