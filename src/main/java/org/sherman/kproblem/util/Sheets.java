@@ -4,7 +4,6 @@ import java.util.Iterator;
 
 import org.sherman.kproblem.core.Cell;
 import org.sherman.kproblem.core.CellIndex;
-import org.sherman.kproblem.core.EvaluationStrategy;
 import org.sherman.kproblem.core.Sheet;
 import org.sherman.kproblem.core.SimpleCell;
 import org.sherman.kproblem.core.SimpleSheet;
