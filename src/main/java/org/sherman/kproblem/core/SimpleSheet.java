@@ -89,4 +89,9 @@ public class SimpleSheet implements Sheet {
         
         return evaulatedValue;
     }
+
+    @Override
+    public Cell getCellByIndex(CellIndex index) {
+        return cells.get(index);
+    }
 }
