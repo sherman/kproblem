@@ -20,7 +20,8 @@ class ParserTest {
             Array(new ConstantValue[Int](0), "=2-2"),
             Array(new ConstantValue[Int](16), "=10-2*2"),
             Array(new ConstantValue[Int](12), "=10/2*2+2"),
-            Array(new ConstantValue[String]("22+1"), "'22+1")
+            //Array(new ConstantValue[String]("22+1"), "'22+1"),
+            Array(new ConstantValue[Int](42), "=A2") // FIXME
         )
     }
 }

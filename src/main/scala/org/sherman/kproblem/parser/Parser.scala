@@ -16,16 +16,17 @@ object Parser extends RegexParsers {
     
     def numericLit = """^[0-9]+""".r
     def stringLit = """^[\p{Print}]+$""".r
+    def referenceLit = """^[A-Z][0-9]""".r
     
     def fold(a: Expression, l: List[~[String,Expression]]) = l.foldLeft(a){
         case (a1, op ~ a2) => binaryOps(op)(a1, a2)
     }
     
-    def expression = ( arithOp | value | printableString )
+    def expression = ( arithOp | refOrValue | printableString )
     
     def value = numericLit ^^ { s => ExpressionConst(s.toInt) }
 
-    def arithOp = "=" ~> value ~ rep(("+" | "-" | "*" | "/") ~ value) ^^ {
+    def arithOp = "=" ~> refOrValue ~ rep(("+" | "-" | "*" | "/") ~ refOrValue) ^^ {
         case a ~ l => fold(a, l)
     }
     
@@ -33,10 +34,14 @@ object Parser extends RegexParsers {
         case a:String => ExpressionString(a)
     }
     
+    def refernce = referenceLit ^^ { s => ExpressionReference(s) } 
+    
+    def refOrValue = (value | refernce) 
+    
     def parse(in:String):Expression = {
         parseAll(expression, in) match {
             case Success(p:Expression, _) => p
-            //case Success(p:ExpressionString, _) => new ConstantValue[String](p.eval) 
+            //case Success(p:ExpressionString, _) => p 
             case e: NoSuccess =>
                 throw new IllegalArgumentException("Bad syntax: "+ in)
         }

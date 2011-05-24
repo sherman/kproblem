@@ -27,4 +27,8 @@ case class ExpressionDiv(a: Expression, b: Expression) extends Expression {
 case class ExpressionString(a: String) {
     def eval(): String = a
 }
+
+case class ExpressionReference(a: String) extends Expression {
+    def eval(): Int = 42
+}
     
