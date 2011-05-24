@@ -1,7 +1,6 @@
 package org.sherman.kproblem.test;
 
 import org.testng.annotations.Test;
-import org.sherman.kproblem.core.EvaluationStrategy;
 import org.sherman.kproblem.parser.*;
 
 import static org.testng.Assert.*;
