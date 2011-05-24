@@ -39,7 +39,7 @@ public class SimpleSheet implements Sheet {
         if (boundsCheckInstance.isColumnIndexOutOfBounds(index.getColumn())) {
             throw new IllegalArgumentException("Column out of bounds!");
         }
-            
+        
         cells.put(index, cell);
         return this;
     }
