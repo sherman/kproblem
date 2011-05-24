@@ -30,7 +30,7 @@ public class Sheets {
                 Expression exp = Parser.parse(
                     rawCells[i][j].trim()
                 );
-                Cell cell = new SimpleCell(exp);
+                Cell cell = new SimpleCell(sheet, exp);
                 sheet.putCell(index, cell);
             }
         }

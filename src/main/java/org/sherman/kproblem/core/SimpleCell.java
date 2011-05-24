@@ -4,8 +4,10 @@ import org.sherman.kproblem.parser.*;
 
 public class SimpleCell implements Cell {
     private final Expression expression;
+    private final Sheet sheet;
     
-    public SimpleCell(Expression expression) {
+    public SimpleCell(Sheet sheet, Expression expression) {
+        this.sheet = sheet;
         this.expression = expression;
     }
 
