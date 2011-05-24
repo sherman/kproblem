@@ -1,9 +1,9 @@
 package org.sherman.kproblem.test
 
-import org.testng.annotations._
-import org.testng.annotations.DataProvider
-import org.testng.Assert._
-import org.sherman.kproblem.parser._
+import _root_.org.testng.annotations._
+import _root_.org.testng.annotations.DataProvider
+import _root_.org.testng.Assert._
+import _root_.org.sherman.kproblem.parser._
 import _root_.org.sherman.kproblem.core._
 
 class ParserTest {
