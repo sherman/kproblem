@@ -31,4 +31,14 @@ case class ExpressionString(a: String) {
 case class ExpressionReference(a: String) extends Expression {
     def eval(): Int = 42
 }
+
+case class ContextedExpressionReference(
+    a:ExpressionReference,
+    sheetCtx:SheetContext
+) extends Expression {
+    def eval(): Int = {
+        println (sheetCtx)
+        a.eval
+    }
+}
     

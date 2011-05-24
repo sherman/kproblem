@@ -7,12 +7,12 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 public class SheetsTest {
-    @Test
+    @Test(enabled=false)
     public void createFrom() {
         Sheet sheet = Sheets.buildFrom(
             new String[][] {
-                {"2+2", "2"},
-                {"'striiiing", "4*5-1/2"}
+                {"=2+2", "2"},
+                {"'striiiing", "=4*5-1/2"}
             }
         );
         

@@ -2,10 +2,12 @@ package org.sherman.kproblem.core;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.sherman.kproblem.util.Cells;
+import org.sherman.kproblem.util.Vertex;
 
 public class SimpleSheet implements Sheet {
     private final Logger log = Logger.getLogger(SimpleSheet.class);
@@ -14,6 +16,9 @@ public class SimpleSheet implements Sheet {
     
     private final Map<CellIndex, Cell> cells =
         new HashMap<CellIndex, Cell>();
+    
+    private final LinkedHashMap<Cell, Vertex> cellToVertex =
+        new LinkedHashMap<Cell, Vertex>();
 
     private final int rows;
     private final int columns;
@@ -39,8 +44,10 @@ public class SimpleSheet implements Sheet {
         if (boundsCheckInstance.isColumnIndexOutOfBounds(index.getColumn())) {
             throw new IllegalArgumentException("Column out of bounds!");
         }
-        
+        System.out.println(cell.getExpression());
         cells.put(index, cell);
+        cellToVertex.put(cell, new Vertex(cellToVertex.size() + 1));
+        System.out.println(cellToVertex);
         return this;
     }
     

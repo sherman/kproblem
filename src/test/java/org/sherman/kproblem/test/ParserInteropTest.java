@@ -9,7 +9,7 @@ import static org.testng.Assert.*;
 public class ParserInteropTest {
     @Test
     public void createParser() {
-        EvaluationStrategy<?> eval = Parser.parse("2*2-1");
-        assertEquals(3, eval.getValue());
+        Expression exp = Parser.parse("=2*2-1", null);
+        assertEquals(3, exp.eval());
     }
 }

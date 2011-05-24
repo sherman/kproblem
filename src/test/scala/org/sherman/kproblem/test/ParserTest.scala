@@ -9,7 +9,7 @@ import _root_.org.sherman.kproblem.core._
 class ParserTest {
     @Test(dataProvider="expressions")
     def parseInt(expected:EvaluationStrategy[_], expression:String) {
-        assertEquals(expected.getValue, Parser.parse(expression).eval);
+        assertEquals(expected.getValue, Parser.parse(expression, null).eval);
     }
     
     @DataProvider(name="expressions")

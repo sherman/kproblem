@@ -1,14 +1,22 @@
 /media2/work/kproblem/target/classes:/home/sherman/.m2/repository/org/beanshell/bsh/2.0b4/bsh-2.0b4.jar:/home/sherman/.m2/repository/com/beust/jcommander/1.12/jcommander-1.12.jar:/home/sherman/.m2/repository/junit/junit/3.8.1/junit-3.8.1.jar:/home/sherman/.m2/repository/log4j/log4j/1.2.16/log4j-1.2.16.jar:/home/sherman/.m2/repository/org/scala-lang/scala-library/2.9.0/scala-library-2.9.0.jar:/home/sherman/.m2/repository/org/yaml/snakeyaml/1.6/snakeyaml-1.6.jar:/home/sherman/.m2/repository/org/testng/testng/6.0/testng-6.0.jar:/opt/sun-jdk-1.6.0.20/jre/lib/resources.jar:/opt/sun-jdk-1.6.0.20/jre/lib/rt.jar:/opt/sun-jdk-1.6.0.20/jre/lib/jsse.jar:/opt/sun-jdk-1.6.0.20/jre/lib/jce.jar:/opt/sun-jdk-1.6.0.20/jre/lib/charsets.jar:/opt/sun-jdk-1.6.0.20/jre/lib/ext/dnsns.jar:/opt/sun-jdk-1.6.0.20/jre/lib/ext/sunpkcs11.jar:/opt/sun-jdk-1.6.0.20/jre/lib/ext/sunjce_provider.jar:/opt/sun-jdk-1.6.0.20/jre/lib/ext/localedata.jar
 -------
+/media2/work/kproblem/src/main/scala/org/sherman/kproblem/parser/SheetContext.scala -> /media2/work/kproblem/src/main/java/org/sherman/kproblem/core/CellIndex.java
+/media2/work/kproblem/src/main/java/org/sherman/kproblem/core/Cell.java -> /media2/work/kproblem/src/main/scala/org/sherman/kproblem/parser/Ast.scala
+/media2/work/kproblem/src/main/java/org/sherman/kproblem/core/EvaluationStrategy.java -> /media2/work/kproblem/src/main/java/org/sherman/kproblem/core/EvaluationStrategy.java
 /media2/work/kproblem/src/test/scala/org/sherman/kproblem/test/ParserTest.scala -> /media2/work/kproblem/src/main/java/org/sherman/kproblem/core/ConstantValue.java
 /media2/work/kproblem/src/test/scala/org/sherman/kproblem/test/ParserTest.scala -> /media2/work/kproblem/src/main/java/org/sherman/kproblem/core/EvaluationStrategy.java
 /media2/work/kproblem/src/test/scala/org/sherman/kproblem/test/ParserTest.scala -> /media2/work/kproblem/src/main/scala/org/sherman/kproblem/parser/Parser.scala
 /media2/work/kproblem/src/test/scala/org/sherman/kproblem/test/ParserTest.scala -> /media2/work/kproblem/src/test/scala/org/sherman/kproblem/test/ParserTest.scala
 /media2/work/kproblem/src/test/scala/org/sherman/kproblem/test/ParserTest.scala -> /media2/work/kproblem/src/main/scala/org/sherman/kproblem/parser/Ast.scala
+/media2/work/kproblem/src/main/scala/org/sherman/kproblem/parser/Parser.scala -> /media2/work/kproblem/src/main/scala/org/sherman/kproblem/parser/SheetContext.scala
 /media2/work/kproblem/src/main/scala/org/sherman/kproblem/parser/Parser.scala -> /media2/work/kproblem/src/main/scala/org/sherman/kproblem/parser/Parser.scala
 /media2/work/kproblem/src/main/scala/org/sherman/kproblem/parser/Parser.scala -> /media2/work/kproblem/src/main/scala/org/sherman/kproblem/parser/Ast.scala
+/media2/work/kproblem/src/main/java/org/sherman/kproblem/core/ConstantValue.java -> /media2/work/kproblem/src/main/java/org/sherman/kproblem/core/ConstantValue.java
+/media2/work/kproblem/src/main/java/org/sherman/kproblem/core/ConstantValue.java -> /media2/work/kproblem/src/main/java/org/sherman/kproblem/core/EvaluationStrategy.java
+/media2/work/kproblem/src/main/scala/org/sherman/kproblem/parser/Ast.scala -> /media2/work/kproblem/src/main/scala/org/sherman/kproblem/parser/SheetContext.scala
 /media2/work/kproblem/src/main/scala/org/sherman/kproblem/parser/Ast.scala -> /media2/work/kproblem/src/main/scala/org/sherman/kproblem/parser/Ast.scala
 -------
+/media2/work/kproblem/src/main/scala/org/sherman/kproblem/parser/SheetContext.scala -> /media2/work/kproblem/target/classes/org/sherman/kproblem/parser/SheetContext.class
 /media2/work/kproblem/src/test/scala/org/sherman/kproblem/test/ParserTest.scala -> /media2/work/kproblem/target/classes/org/sherman/kproblem/test/ParserTest.class
 /media2/work/kproblem/src/main/scala/org/sherman/kproblem/parser/Parser.scala -> /media2/work/kproblem/target/classes/org/sherman/kproblem/parser/Parser$.class
 /media2/work/kproblem/src/main/scala/org/sherman/kproblem/parser/Parser.scala -> /media2/work/kproblem/target/classes/org/sherman/kproblem/parser/Parser$$anonfun$fold$1.class
@@ -30,6 +38,7 @@
 /media2/work/kproblem/src/main/scala/org/sherman/kproblem/parser/Parser.scala -> /media2/work/kproblem/target/classes/org/sherman/kproblem/parser/Parser$$anonfun$arithOp$2$$anonfun$apply$1$$anonfun$apply$2.class
 /media2/work/kproblem/src/main/scala/org/sherman/kproblem/parser/Ast.scala -> /media2/work/kproblem/target/classes/org/sherman/kproblem/parser/ExpressionConst$.class
 /media2/work/kproblem/src/main/scala/org/sherman/kproblem/parser/Ast.scala -> /media2/work/kproblem/target/classes/org/sherman/kproblem/parser/ExpressionAdd$.class
+/media2/work/kproblem/src/main/scala/org/sherman/kproblem/parser/Ast.scala -> /media2/work/kproblem/target/classes/org/sherman/kproblem/parser/ContextedExpressionReference$.class
 /media2/work/kproblem/src/main/scala/org/sherman/kproblem/parser/Ast.scala -> /media2/work/kproblem/target/classes/org/sherman/kproblem/parser/Expression.class
 /media2/work/kproblem/src/main/scala/org/sherman/kproblem/parser/Ast.scala -> /media2/work/kproblem/target/classes/org/sherman/kproblem/parser/ExpressionMul$.class
 /media2/work/kproblem/src/main/scala/org/sherman/kproblem/parser/Ast.scala -> /media2/work/kproblem/target/classes/org/sherman/kproblem/parser/ExpressionReference.class
@@ -42,4 +51,5 @@
 /media2/work/kproblem/src/main/scala/org/sherman/kproblem/parser/Ast.scala -> /media2/work/kproblem/target/classes/org/sherman/kproblem/parser/ExpressionAdd.class
 /media2/work/kproblem/src/main/scala/org/sherman/kproblem/parser/Ast.scala -> /media2/work/kproblem/target/classes/org/sherman/kproblem/parser/ExpressionDiv.class
 /media2/work/kproblem/src/main/scala/org/sherman/kproblem/parser/Ast.scala -> /media2/work/kproblem/target/classes/org/sherman/kproblem/parser/ExpressionReference$.class
+/media2/work/kproblem/src/main/scala/org/sherman/kproblem/parser/Ast.scala -> /media2/work/kproblem/target/classes/org/sherman/kproblem/parser/ContextedExpressionReference.class
 /media2/work/kproblem/src/main/scala/org/sherman/kproblem/parser/Ast.scala -> /media2/work/kproblem/target/classes/org/sherman/kproblem/parser/ExpressionString.class
