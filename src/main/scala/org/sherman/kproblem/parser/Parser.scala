@@ -38,10 +38,9 @@ object Parser extends RegexParsers {
     
     def refOrValue = (value | refernce) 
     
-    def parse(in:String, sheetCtx:SheetContext):Expression = {
+    def parse(in:String):Expression = {
         this.
         parseAll(expression, in) match {
-            case Success(p:ExpressionReference, _) => ContextedExpressionReference(p, sheetCtx)
             case Success(p:Expression, _) => p
             //case Success(p:ExpressionString, _) => p
             case e: NoSuccess =>

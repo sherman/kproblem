@@ -11,7 +11,7 @@ public class SimpleCell implements Cell {
 
     @Override
     public String getValue() {
-        return "" + expression.eval();
+        return "" + expression.eval(EmptySheetContext);
     }
 
     @Override

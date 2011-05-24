@@ -29,8 +29,7 @@ public class Sheets {
                     new CellIndex(i + 1, columnIndex.next().toString());
                 
                 Expression exp = Parser.parse(
-                    rawCells[i][j].trim(),
-                    new SheetContext(index)
+                    rawCells[i][j].trim()
                 );
                 Cell cell = new SimpleCell(exp);
                 sheet.putCell(index, cell);

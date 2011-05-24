@@ -1,44 +1,33 @@
 package org.sherman.kproblem.parser
 
 sealed abstract class Expression {
-    def eval(): Int
+    def eval(sheetCtx:SheetContext): Int
 }
 
 case class ExpressionConst(value: Int) extends Expression {
-    def eval(): Int = value
+    def eval(sheetCtx:SheetContext): Int = value
 }
 
 case class ExpressionAdd(a: Expression, b: Expression) extends Expression {
-    def eval(): Int = a.eval + b.eval
+    def eval(sheetCtx:SheetContext): Int = a.eval(sheetCtx) + b.eval(sheetCtx)
 }
 
 case class ExpressionSub(a: Expression, b: Expression) extends Expression {
-    def eval(): Int = a.eval - b.eval
+    def eval(sheetCtx:SheetContext): Int = a.eval(sheetCtx) - b.eval(sheetCtx)
 }
 
 case class ExpressionMul(a: Expression, b: Expression) extends Expression {
-    def eval(): Int = a.eval * b.eval
+    def eval(sheetCtx:SheetContext): Int = a.eval(sheetCtx) * b.eval(sheetCtx)
 }
 
 case class ExpressionDiv(a: Expression, b: Expression) extends Expression {
-    def eval(): Int = a.eval / b.eval
+    def eval(sheetCtx:SheetContext): Int = a.eval(sheetCtx) / b.eval(sheetCtx)
 }
 
 case class ExpressionString(a: String) {
-    def eval(): String = a
+    def eval(sheetCtx:SheetContext): String = a
 }
 
 case class ExpressionReference(a: String) extends Expression {
-    def eval(): Int = 42
-}
-
-case class ContextedExpressionReference(
-    a:ExpressionReference,
-    sheetCtx:SheetContext
-) extends Expression {
-    def eval(): Int = {
-        println (sheetCtx)
-        a.eval
-    }
-}
-    
+    def eval(sheetCtx:SheetContext): Int = 42
+}    
