@@ -44,7 +44,8 @@ public class SimpleSheet implements Sheet {
         if (boundsCheckInstance.isColumnIndexOutOfBounds(index.getColumn())) {
             throw new IllegalArgumentException("Column out of bounds!");
         }
-        System.out.println(cell.getExpression());
+        
+        log.debug(cell.getExpression());
         cells.put(index, cell);
         cellToVertex.put(cell, new Vertex(cellToVertex.size() + 1));
         System.out.println(cellToVertex);
