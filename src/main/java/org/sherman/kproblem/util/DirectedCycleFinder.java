@@ -48,8 +48,12 @@ public class DirectedCycleFinder {
                 edgeTo.put(adjVertex, v);
                 dfs(adjVertex);
             } else if (stack.get(adjVertex)) {
-                if (!edgeTo.get(v).equals(adjVertex))
-                    cycle.push(edgeTo.get(v));
+                cycle = new Stack<Vertex>();
+                Vertex curr = v;
+                while (!curr.equals(adjVertex)) {
+                    cycle.push(curr);
+                    curr = edgeTo.get(curr);
+                }
                 
                 cycle.push(adjVertex);
                 cycle.push(v);

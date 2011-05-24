@@ -27,6 +27,7 @@ public class DirectedCycleTest {
         DirectedCycleFinder finder = new DirectedCycleFinder(graph);
         finder.find();
         Stack<Vertex> expected = new Stack<Vertex>();
+        expected.push(new Vertex(3));
         expected.push(new Vertex(2));
         expected.push(new Vertex(1));
         expected.push(new Vertex(3));
@@ -42,6 +43,7 @@ public class DirectedCycleTest {
         finder = new DirectedCycleFinder(graph);
         finder.find();
         expected = new Stack<Vertex>();
+        expected.push(new Vertex(2));
         expected.push(new Vertex(1));
         expected.push(new Vertex(2));
         assertEquals(finder.getCycle(), expected);
@@ -56,6 +58,29 @@ public class DirectedCycleTest {
         finder = new DirectedCycleFinder(graph);
         finder.find();
         expected = new Stack<Vertex>();
+        assertEquals(finder.getCycle(), expected);
+        
+        graph = new DiGraph().
+        addEdge(
+            new Edge(new Vertex(1), new Vertex(2))
+        ).addEdge(
+            new Edge(new Vertex(2), new Vertex(3))
+        ).addEdge(
+            new Edge(new Vertex(3), new Vertex(4))
+        ).addEdge(
+            new Edge(new Vertex(4), new Vertex(5))
+        ).addEdge(
+            new Edge(new Vertex(5), new Vertex(2))
+        );
+        
+        finder = new DirectedCycleFinder(graph);
+        finder.find();
+        expected = new Stack<Vertex>();
+        expected.push(new Vertex(5));
+        expected.push(new Vertex(4));
+        expected.push(new Vertex(3));
+        expected.push(new Vertex(2));
+        expected.push(new Vertex(5));
         assertEquals(finder.getCycle(), expected);
     }
 }
