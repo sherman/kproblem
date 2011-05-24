@@ -7,5 +7,8 @@ public interface Cell {
      * String representation of the value
      */
     String getValue();
+    /**
+     * @return A parse tree, consisting of nested Expressions.
+     */
     Expression getExpression();
 }
