@@ -1,4 +1,4 @@
-package org.sherman.kproblem.parser;
+package org.sherman.kproblem.parser
 
     sealed abstract class Expression {
         def eval():Int

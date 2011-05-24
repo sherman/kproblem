@@ -1,4 +1,4 @@
-package org.sherman.kproblem.parser;
+package org.sherman.kproblem.parser
 
 import scala.util.parsing.input.StreamReader
 import scala.util.parsing.combinator._
