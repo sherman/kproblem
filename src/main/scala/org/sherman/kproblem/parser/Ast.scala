@@ -1,5 +1,7 @@
 package org.sherman.kproblem.parser
 
+import org.sherman.kproblem.core._;
+
 sealed abstract class Expression {
     def eval(sheetCtx:SheetContext): Int
 }
@@ -29,5 +31,12 @@ case class ExpressionString(a: String) {
 }
 
 case class ExpressionReference(a: String) extends Expression {
-    def eval(sheetCtx:SheetContext): Int = 42
+    def eval(sheetCtx:SheetContext): Int = {
+        // FIXME: optimize
+        val toIndex = new CellIndex(a(1).toString.toInt, a(0).toString)
+        val sheet = sheetCtx.sheet
+        val cell = sheet.getCellByIndex(toIndex)
+        //println ("Index:" + a(1).toString.toInt)
+        cell.getExpression().eval(sheetCtx)
+    }
 }    
