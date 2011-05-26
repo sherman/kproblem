@@ -1,13 +1,5 @@
 package org.sherman.kproblem.core;
 
-public class Value<T> {
-    private final T value;
-    
-    public Value(T value) {
-        this.value = value;
-    }
-    
-    public T getValue() {
-        return value;
-    }
+public interface Value<T> {
+    T getValue();
 }

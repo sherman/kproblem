@@ -38,7 +38,7 @@ object Parser extends RegexParsers {
     
     def refOrValue = (value | refernce) 
     
-    def parse(in:String):Expression = {
+    def parse(in:String):Value[T] = {
         this.
         parseAll(expression, in) match {
             case Success(p:Expression, _) => p
