@@ -2,6 +2,7 @@ package org.sherman.kproblem.parser
 
 import org.sherman.kproblem.core.EagerValue;
 import org.sherman.kproblem.core._;
+import org.sherman.kproblem.util._;
 
 sealed abstract class Expression {
     def eval(sheetCtx:SheetContext): Int
@@ -44,7 +45,17 @@ case class ExpressionReference(a: String) extends Expression {
         
         // guarantees by parser grammar
         if (cell.getValue.isInstanceOf[LazyValue]) {
-            cell.getValue.getValue
+            sheetCtx addEdge new Vertex[CellIndex](toIndex)
+            sheetCtx isCycleFound match {
+                case true => throw new IllegalArgumentException(
+                    "Cycle found."
+                );
+                case false => {
+                    println(sheetCtx refsGraph)
+                    sheetCtx currentCell = toIndex
+                    cell.getValue.getValue
+                }
+            }
         } else if (cell.getValue.isInstanceOf[EagerValue[_]]) {
             throw new IllegalArgumentException(
                 String.format(

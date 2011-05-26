@@ -28,4 +28,9 @@ public class Vertex<T> {
         
         return v.id.equals(id);
     }
+    
+    @Override
+    public String toString() {
+        return id.toString();
+    }
 }

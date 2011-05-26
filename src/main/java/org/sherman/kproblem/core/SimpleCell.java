@@ -1,7 +1,5 @@
 package org.sherman.kproblem.core;
 
-import org.sherman.kproblem.parser.*;
-
 public class SimpleCell implements Cell {
     private final Value<?> value;
     
@@ -11,6 +9,7 @@ public class SimpleCell implements Cell {
         this.value = value;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public Value<?> getValue() {
         return value;

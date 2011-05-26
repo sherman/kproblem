@@ -63,4 +63,23 @@ public class DiGraph {
             edges.containsKey(e.getFrom())
             && edges.get(e.getFrom()).contains(e.getTo()); 
     }
+    
+    @Override
+    public String toString() {
+        StringBuilder graphToText = new StringBuilder();
+        for (Vertex<?> v : edges.keySet()) {
+            graphToText.
+                append(v).
+                append("->").
+                    append("{ ");
+            
+            for (Vertex<?> adjVertex : edges.get(v)) {
+                graphToText.append(adjVertex).append(',');
+            }
+            
+            graphToText.append(" }\r\n");
+        }
+        
+        return graphToText.toString();
+    }
 }

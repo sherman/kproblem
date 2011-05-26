@@ -8,11 +8,10 @@ import java.util.Stack;
 
 public class DirectedCycleFinder {
     private final DiGraph graph;
-    private final Set<Vertex<?>> marked = new HashSet<Vertex<?>>();
+    private Set<Vertex<?>> marked = new HashSet<Vertex<?>>();
     private final Map<Vertex<?>, Boolean> stack;
-    private final Map<Vertex<?>, Vertex<?>> edgeTo = new HashMap<Vertex<?>, Vertex<?>>();
+    private Map<Vertex<?>, Vertex<?>> edgeTo = new HashMap<Vertex<?>, Vertex<?>>();
     private Stack<Vertex<?>> cycle = new Stack<Vertex<?>>();
-    private boolean cycleFound;
     
     public DirectedCycleFinder(DiGraph graph) {
         this.graph = graph;
@@ -24,12 +23,27 @@ public class DirectedCycleFinder {
         }
     }
     
-    public void find() {
+    // FIXME: don't create it every time
+    public DirectedCycleFinder find() {
+        cycle = new Stack<Vertex<?>>();
+        for (Vertex<?> v : graph.getVertices()) {
+            stack.put(v, false);
+        }
+        
+        marked = new HashSet<Vertex<?>>();
+        edgeTo = new HashMap<Vertex<?>, Vertex<?>>();
+        
         for (Vertex<?> v : graph.getVertices()) {
             if (!marked.contains(v)) {
                 dfs(v);
             }
         }
+        
+        return this;
+    }
+    
+    public boolean isCycleFound() {
+        return !cycle.isEmpty();
     }
     
     public Stack<Vertex<?>> getCycle() {
@@ -42,7 +56,7 @@ public class DirectedCycleFinder {
         
         // for all adjacent vertices of v
         for (Vertex<?> adjVertex : graph.getAdjacentVerticesOf(v)) {
-            if (cycleFound)
+            if (!cycle.isEmpty())
                 return;
             else if (!marked.contains(adjVertex)) {
                 edgeTo.put(adjVertex, v);

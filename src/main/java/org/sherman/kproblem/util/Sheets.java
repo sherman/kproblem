@@ -16,6 +16,8 @@ public class Sheets {
     public static Sheet buildFrom(String[][] rawCells) {
         Sheet sheet = new SimpleSheet(rawCells.length, rawCells[0].length);
         
+        SheetContext sheetCtx = new SheetContext(sheet, null);
+        
         for (int i = 0; i < rawCells.length; i++) {
             Iterator<Character> columnIndex =
                 Cells.getNextColumnIndexIterator();
@@ -28,10 +30,12 @@ public class Sheets {
                 CellIndex index =
                     new CellIndex(i + 1, columnIndex.next().toString());
                 
+                sheetCtx.currentCell_$eq(index);
+                
                 Cell cell = new SimpleCell(
                     Parser.parse(
                         rawCells[i][j].trim(),
-                        new SheetContext(sheet, index)
+                        sheetCtx
                     )
                 );
                 sheet.putCell(index, cell);
