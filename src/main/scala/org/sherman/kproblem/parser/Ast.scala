@@ -34,14 +34,17 @@ case class ExpressionString(a: String) {
 case class ExpressionReference(a: String) extends Expression {
     def eval(sheetCtx:SheetContext): Int = {
         // FIXME: optimize
-        val toIndex = new CellIndex(a(1).toString.toInt, a(0).toString)
-        val sheet = sheetCtx.sheet
-        val cell = sheet.getCellByIndex(toIndex)
-        //println ("Index:" + a(1).toString.toInt)
+        val toIndex = new CellIndex(
+            a(1).toString.toInt,
+            a(0).toString
+        )
+        
+        val sheet = sheetCtx sheet
+        val cell = sheet getCellByIndex toIndex
         
         // guarantees by parser grammar
         cell.getValue match {
-            case v:EagerValue[_] => v.getValue
+            case v:EagerValue[_] => v getValue
             case _ => throw new IllegalArgumentException(
                 String.format(
                     "Unknown value type in reference expression %s",
