@@ -45,7 +45,7 @@ public class SimpleSheet implements Sheet {
             throw new IllegalArgumentException("Column out of bounds!");
         }
         
-        log.debug(cell.getExpression());
+        //log.debug(cell.getExpression());
         cells.put(index, cell);
         cellToVertex.put(cell, new Vertex(cellToVertex.size() + 1));
         System.out.println(cellToVertex);

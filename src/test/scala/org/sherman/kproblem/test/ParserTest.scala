@@ -8,23 +8,21 @@ import _root_.org.sherman.kproblem.core._
 
 class ParserTest {
     @Test(dataProvider="expressions")
-    def parseInt(expected:Int, expression:String) {
+    def parseInt(expected:String, expression:String) {
         assertEquals(
             expected,
-            Parser.parse(expression).eval(
-                EmptySheetContext
-            )
+            Parser.parse(expression, EmptySheetContext).toString()
         );
     }
     
     @DataProvider(name="expressions")
     def createExpressions = {
         Array(
-            Array(2, "2"), 
-            Array(4, "=2+2"),
-            Array(0, "=2-2"),
-            Array(16, "=10-2*2"),
-            Array(12, "=10/2*2+2")
+            Array("2", "2"), 
+            Array("4", "=2+2"),
+            Array("0", "=2-2"),
+            Array("16", "=10-2*2"),
+            Array("12", "=10/2*2+2")
             //Array(new ConstantValue[String]("22+1"), "'22+1"),
             //Array(new ConstantValue[Int](42), "=A2") // FIXME
         )

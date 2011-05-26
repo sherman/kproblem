@@ -3,6 +3,8 @@ package org.sherman.kproblem.core;
 public class EagerValue<T> implements Value<T> {
     protected T value;
     
+    public EagerValue() {}
+    
     public EagerValue(T value) {
         this.value = value;
     }

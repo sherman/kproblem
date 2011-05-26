@@ -41,7 +41,7 @@ object Parser extends RegexParsers {
     def parse(in:String, sheetCtx:SheetContext):Value[_] = {
         this.
         parseAll(expression, in) match {
-            case Success(exp:Expression, _) => new LazyValue[Int](sheetCtx, exp)
+            case Success(exp:Expression, _) => new LazyValue(exp, sheetCtx)
             case Success(exp:ExpressionString, _) => new EagerValue[String](exp eval sheetCtx);
             case e: NoSuccess =>
                 throw new IllegalArgumentException("Bad syntax: "+ in)

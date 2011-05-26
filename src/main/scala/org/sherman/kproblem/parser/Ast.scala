@@ -1,5 +1,6 @@
 package org.sherman.kproblem.parser
 
+import org.sherman.kproblem.core.EagerValue;
 import org.sherman.kproblem.core._;
 
 sealed abstract class Expression {
@@ -37,6 +38,16 @@ case class ExpressionReference(a: String) extends Expression {
         val sheet = sheetCtx.sheet
         val cell = sheet.getCellByIndex(toIndex)
         //println ("Index:" + a(1).toString.toInt)
-        cell.getExpression().eval(sheetCtx)
+        
+        // guarantees by parser grammar
+        cell.getValue match {
+            case v:EagerValue[_] => v.getValue
+            case _ => throw new IllegalArgumentException(
+                String.format(
+                    "Unknown value type in reference expression %s",
+                    this.toString()
+                )
+            );
+        }
     }
 }    

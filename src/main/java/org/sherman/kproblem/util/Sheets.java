@@ -7,6 +7,7 @@ import org.sherman.kproblem.core.CellIndex;
 import org.sherman.kproblem.core.Sheet;
 import org.sherman.kproblem.core.SimpleCell;
 import org.sherman.kproblem.core.SimpleSheet;
+import org.sherman.kproblem.core.Value;
 import org.sherman.kproblem.parser.*;
 
 public class Sheets {
@@ -27,10 +28,11 @@ public class Sheets {
                 CellIndex index =
                     new CellIndex(i + 1, columnIndex.next().toString());
                 
-                Expression exp = Parser.parse(
-                    rawCells[i][j].trim()
+                Value<?> value = Parser.parse(
+                    rawCells[i][j].trim(), new SheetContext(sheet, index)
                 );
-                Cell cell = new SimpleCell(sheet, index, exp);
+                
+                Cell cell = new SimpleCell(value);
                 sheet.putCell(index, cell);
             }
         }

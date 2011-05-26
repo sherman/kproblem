@@ -2,22 +2,22 @@ package org.sherman.kproblem.core;
 
 import org.sherman.kproblem.parser.*;
 
-public class LazyValue<T> extends EagerValue<T> {
+public class LazyValue extends EagerValue<Integer> {
     private boolean evaluated;
     
     private final Expression expression;
     private final SheetContext sheetContext;
     
     public LazyValue(
-        SheetContext sheetCtx,
-        Expression expression
+        Expression expression,
+        SheetContext sheetCtx
     ) {
         this.expression = expression;
         this.sheetContext = sheetCtx;
-        
     }
     
-    public T getValue() {
+    @Override
+    public Integer getValue() {
         if (!evaluated) {
             evaluate();
         }

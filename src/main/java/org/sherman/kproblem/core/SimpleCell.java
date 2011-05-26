@@ -3,29 +3,16 @@ package org.sherman.kproblem.core;
 import org.sherman.kproblem.parser.*;
 
 public class SimpleCell implements Cell {
-    private final Expression expression;
-    private final Sheet sheet;
-    private final CellIndex index;
-    private final SheetContext sheetContext;
+    private final Value<?> value;
     
     public SimpleCell(
-        Sheet sheet,
-        CellIndex index,
-        Expression expression
+        Value<?> value
     ) {
-        this.sheet = sheet;
-        this.index = index;
-        this.expression = expression;
-        this.sheetContext = new SheetContext(sheet, index);
+        this.value = value;
     }
 
     @Override
-    public <T> Value<T> getValue() {
-        return expression.eval(sheetContext);
-    }
-
-    @Override
-    public Expression getExpression() {
-        return expression;
+    public Value<?> getValue() {
+        return value;
     }
 }
