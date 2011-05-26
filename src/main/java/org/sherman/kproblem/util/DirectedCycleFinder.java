@@ -8,48 +8,48 @@ import java.util.Stack;
 
 public class DirectedCycleFinder {
     private final DiGraph graph;
-    private final Set<Vertex> marked = new HashSet<Vertex>();
-    private final Map<Vertex, Boolean> stack;
-    private final Map<Vertex, Vertex> edgeTo = new HashMap<Vertex, Vertex>();
-    private Stack<Vertex> cycle = new Stack<Vertex>();
+    private final Set<Vertex<?>> marked = new HashSet<Vertex<?>>();
+    private final Map<Vertex<?>, Boolean> stack;
+    private final Map<Vertex<?>, Vertex<?>> edgeTo = new HashMap<Vertex<?>, Vertex<?>>();
+    private Stack<Vertex<?>> cycle = new Stack<Vertex<?>>();
     private boolean cycleFound;
     
     public DirectedCycleFinder(DiGraph graph) {
         this.graph = graph;
         
-        stack = new HashMap<Vertex, Boolean>();
+        stack = new HashMap<Vertex<?>, Boolean>();
         
-        for (Vertex v : graph.getVertices()) {
+        for (Vertex<?> v : graph.getVertices()) {
             stack.put(v, false);
         }
     }
     
     public void find() {
-        for (Vertex v : graph.getVertices()) {
+        for (Vertex<?> v : graph.getVertices()) {
             if (!marked.contains(v)) {
                 dfs(v);
             }
         }
     }
     
-    public Stack<Vertex> getCycle() {
+    public Stack<Vertex<?>> getCycle() {
         return cycle;
     }
     
-    private void dfs(Vertex v) {
+    private void dfs(Vertex<?> v) {
         stack.put(v, true);
         marked.add(v);
         
         // for all adjacent vertices of v
-        for (Vertex adjVertex : graph.getAdjacentVerticesOf(v)) {
+        for (Vertex<?> adjVertex : graph.getAdjacentVerticesOf(v)) {
             if (cycleFound)
                 return;
             else if (!marked.contains(adjVertex)) {
                 edgeTo.put(adjVertex, v);
                 dfs(adjVertex);
             } else if (stack.get(adjVertex)) {
-                cycle = new Stack<Vertex>();
-                Vertex curr = v;
+                cycle = new Stack<Vertex<?>>();
+                Vertex<?> curr = v;
                 while (!curr.equals(adjVertex)) {
                     cycle.push(curr);
                     curr = edgeTo.get(curr);

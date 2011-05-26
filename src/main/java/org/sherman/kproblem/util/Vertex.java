@@ -1,19 +1,19 @@
 package org.sherman.kproblem.util;
 
-public class Vertex {
-    private final int id;
+public class Vertex<T> {
+    private final T id;
     
-    public Vertex(int id) {
+    public Vertex(T id) {
         this.id = id;
     }
     
-    public int getId() {
+    public T getId() {
         return id;
     }
     
     @Override
     public int hashCode() {
-        return new Integer(id);
+        return id.hashCode();
     }
     
     @Override
@@ -23,8 +23,9 @@ public class Vertex {
         if (o == null || getClass() != o.getClass())
             return false;
 
-        Vertex v = (Vertex) o;
+        @SuppressWarnings("unchecked")
+        Vertex<T> v = (Vertex<T>) o;
         
-        return v.id == id;
+        return v.id.equals(id);
     }
 }

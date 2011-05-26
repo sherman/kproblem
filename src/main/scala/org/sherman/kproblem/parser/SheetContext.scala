@@ -7,7 +7,7 @@ class SheetContext(s:Sheet, cur:CellIndex) {
     val sheet:Sheet = s
     val currentCell:CellIndex = cur
     
-    private val refMap = Map[CellIndex, Vertex]();
+    //private val refMap = Map[CellIndex, Vertex[_]]();
 }
 
 object EmptySheetContext extends SheetContext(null, null) {

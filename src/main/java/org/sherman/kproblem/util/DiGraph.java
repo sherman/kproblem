@@ -6,35 +6,35 @@ import java.util.Map;
 import java.util.Set;
 
 public class DiGraph {
-    private Set<Vertex> vertices = new HashSet<Vertex>();
-    private Map<Vertex, Set<Vertex>> edges;
+    private Set<Vertex<?>> vertices = new HashSet<Vertex<?>>();
+    private Map<Vertex<?>, Set<Vertex<?>>> edges;
     private int edgesCount;
     
     public DiGraph() {
-        edges = new HashMap<Vertex, Set<Vertex>>();
+        edges = new HashMap<Vertex<?>, Set<Vertex<?>>>();
     }
     
-    public Set<Vertex> getVertices() {
+    public Set<Vertex<?>> getVertices() {
         return vertices;
     }
     
-    public Set<Vertex> getAdjacentVerticesOf(Vertex v) {
+    public Set<Vertex<?>> getAdjacentVerticesOf(Vertex<?> v) {
         if (edges.containsKey(v)) {
             return edges.get(v);
         } else {
-            return new HashSet<Vertex>();
+            return new HashSet<Vertex<?>>();
         }
     }
     
     public DiGraph addEdge(Edge e) {
-        Vertex from = e.getFrom();
-        Vertex to = e.getTo();
+        Vertex<?> from = e.getFrom();
+        Vertex<?> to = e.getTo();
         
         addVertex(from).addVertex(to);
         
         // add from -> to edge
         if (!edges.containsKey(from)) {
-            edges.put(from, new HashSet<Vertex>());
+            edges.put(from, new HashSet<Vertex<?>>());
         }
         
         if (!edges.get(from).contains(to)) {
@@ -46,7 +46,7 @@ public class DiGraph {
         return this;
     }
     
-    public DiGraph addVertex(Vertex v) {
+    public DiGraph addVertex(Vertex<?> v) {
         if (!vertices.contains(v)) {
             vertices.add(v);
         }
@@ -54,7 +54,7 @@ public class DiGraph {
         return this;
     }
     
-    public boolean hasVertex(Vertex v) {
+    public boolean hasVertex(Vertex<?> v) {
         return vertices.contains(v);
     }
     
