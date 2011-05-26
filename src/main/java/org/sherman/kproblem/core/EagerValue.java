@@ -1,5 +1,8 @@
 package org.sherman.kproblem.core;
 
+/**
+ * Class is used for string values.
+*/
 public class EagerValue<T> implements Value<T> {
     protected T value;
     

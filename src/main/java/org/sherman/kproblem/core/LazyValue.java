@@ -2,10 +2,18 @@ package org.sherman.kproblem.core;
 
 import org.sherman.kproblem.parser.*;
 
+/**
+ * Call-by-need value representation. This class is used
+ * for any value types, except strings.
+*/
 public class LazyValue extends EagerValue<Integer> {
     private boolean evaluated;
     
+    /**
+     * AST
+     */
     private final Expression expression;
+    
     private final SheetContext sheetCtx;
     private final CellIndex index;
     
