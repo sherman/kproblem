@@ -2,23 +2,18 @@ package org.sherman.kproblem.core;
 
 import org.sherman.kproblem.parser.*;
 
-public class LazyValue<T> extends EagarValue<T> {
+public class LazyValue<T> extends EagerValue<T> {
     private boolean evaluated;
     
     private final Expression expression;
-    private final Sheet sheet;
-    private final CellIndex index;
     private final SheetContext sheetContext;
     
     public LazyValue(
-        Sheet sheet,
-        CellIndex index,
+        SheetContext sheetCtx,
         Expression expression
     ) {
-        this.sheet = sheet;
-        this.index = index;
         this.expression = expression;
-        this.sheetContext = new SheetContext(sheet, index);
+        this.sheetContext = sheetCtx;
         
     }
     

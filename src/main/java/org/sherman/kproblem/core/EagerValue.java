@@ -1,9 +1,9 @@
 package org.sherman.kproblem.core;
 
-public class EagarValue<T> implements Value<T> {
+public class EagerValue<T> implements Value<T> {
     protected T value;
     
-    public EagarValue(T value) {
+    public EagerValue(T value) {
         this.value = value;
     }
     

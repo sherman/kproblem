@@ -38,11 +38,11 @@ object Parser extends RegexParsers {
     
     def refOrValue = (value | refernce) 
     
-    def parse(in:String):Value[T] = {
+    def parse(in:String, sheetCtx:SheetContext):Value[_] = {
         this.
         parseAll(expression, in) match {
-            case Success(p:Expression, _) => p
-            //case Success(p:ExpressionString, _) => p
+            case Success(exp:Expression, _) => new LazyValue[Int](sheetCtx, exp)
+            case Success(exp:ExpressionString, _) => new EagerValue[String](exp eval sheetCtx);
             case e: NoSuccess =>
                 throw new IllegalArgumentException("Bad syntax: "+ in)
         }
