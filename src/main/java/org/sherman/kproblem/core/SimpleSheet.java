@@ -84,8 +84,16 @@ public class SimpleSheet implements Sheet {
         Iterator<CellIndex> iter = cells.keySet().iterator();
         
         while (iter.hasNext()) {
-            evaulatedValue +=
-                cells.get(iter.next()).getValue().toString() + " ";
+            String value;
+            try {
+                value = cells.get(iter.next()).getValue().toString() + " ";
+            } catch (IllegalArgumentException e) {
+                log.debug(e);
+                value = String.format("#%s ", e.getMessage());
+            }
+            
+            evaulatedValue += value;
+                
         }
         
         return evaulatedValue;

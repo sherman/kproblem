@@ -43,14 +43,32 @@ case class ExpressionReference(a: String) extends Expression {
         val cell = sheet getCellByIndex toIndex
         
         // guarantees by parser grammar
-        cell.getValue match {
-            case v:EagerValue[_] => v getValue
-            case _ => throw new IllegalArgumentException(
+        if (cell.getValue.isInstanceOf[LazyValue]) {
+            cell.getValue.getValue
+        } else if (cell.getValue.isInstanceOf[EagerValue[_]]) {
+            throw new IllegalArgumentException(
+                String.format(
+                    "Reference to cell: {%s}, could not be resolved.",
+                    toIndex.toString()
+                )
+            );
+        } else {
+            throw new IllegalArgumentException(
                 String.format(
                     "Unknown value type in reference expression %s",
                     this.toString()
                 )
             );
         }
+        /*cell.getValue match {
+            //case v:LazyValue => 
+            case v:LazyValue[_] => v getValue
+            case _ => throw new IllegalArgumentException(
+                String.format(
+                    "Unknown value type in reference expression %s",
+                    this.toString()
+                )
+            );
+        }*/
     }
 }    

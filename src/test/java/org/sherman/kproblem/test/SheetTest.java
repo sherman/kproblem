@@ -69,6 +69,17 @@ public class SheetTest {
         );
         
         assertEquals(sheet.getValue(), "240 15 yet another string 242 ");
+    }
+    
+    @Test
+    public void createSheetWithErrorsAndParse() {
+        Sheet sheet = Sheets.buildFrom(
+            new String[][] {
+                {"=17-1*B1", "5*3"},
+                {"'yet another string", "=A1+'srting"}
+            }
+        );
         
+        assertEquals(sheet.getValue(), "#Reference to cell: {{1,B}}, could not be resolved. #Bad syntax: 5*3 yet another string #Bad syntax: =A1+'srting ");
     }
 }

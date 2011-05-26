@@ -28,11 +28,12 @@ public class Sheets {
                 CellIndex index =
                     new CellIndex(i + 1, columnIndex.next().toString());
                 
-                Value<?> value = Parser.parse(
-                    rawCells[i][j].trim(), new SheetContext(sheet, index)
+                Cell cell = new SimpleCell(
+                    Parser.parse(
+                        rawCells[i][j].trim(),
+                        new SheetContext(sheet, index)
+                    )
                 );
-                
-                Cell cell = new SimpleCell(value);
                 sheet.putCell(index, cell);
             }
         }
