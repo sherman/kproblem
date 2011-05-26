@@ -17,7 +17,7 @@ public class SheetApp {
         System.out.print(sheet.getValue());
     }
     
-    private static class InputValidator {
+    public static class InputValidator {
         private static String[][] elts;
         
         public static String[][] getElts() {
