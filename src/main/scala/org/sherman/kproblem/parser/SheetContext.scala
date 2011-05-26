@@ -12,7 +12,6 @@ class SheetContext(s:Sheet, cur:CellIndex) { ctx =>
     var currentCell = cur
     
     val refsGraph = new DiGraph()
-    
     val cycleFinder = new DirectedCycleFinder(refsGraph)
     
     /**

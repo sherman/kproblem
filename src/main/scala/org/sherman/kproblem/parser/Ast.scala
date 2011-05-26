@@ -46,8 +46,8 @@ case class ExpressionReference(a: String) extends Expression {
         // guarantees by parser grammar
         if (cell.getValue.isInstanceOf[LazyValue]) {
             val currCell:CellIndex = sheetCtx.currentCell
-            println ("from " + currCell)
-            println ("to " + toIndex)
+            //println ("from " + currCell)
+            //println ("to " + toIndex)
             
             if (toIndex != currCell)
                 sheetCtx addEdge new Vertex[CellIndex](toIndex)
@@ -57,7 +57,6 @@ case class ExpressionReference(a: String) extends Expression {
                     "Cycle found."
                 );
                 case false => {
-                    println(sheetCtx refsGraph)
                     sheetCtx currentCell = toIndex
                     cell.getValue.getValue
                 }
