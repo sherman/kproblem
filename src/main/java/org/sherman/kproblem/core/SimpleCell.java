@@ -20,8 +20,8 @@ public class SimpleCell implements Cell {
     }
 
     @Override
-    public String getValue() {
-        return "" + expression.eval(sheetContext);
+    public <T> Value<T> getValue() {
+        return expression.eval(sheetContext);
     }
 
     @Override
