@@ -8,30 +8,19 @@ import java.util.Stack;
 
 public class DirectedCycleFinder {
     private final DiGraph graph;
-    private Set<Vertex<?>> marked = new HashSet<Vertex<?>>();
-    private final Map<Vertex<?>, Boolean> stack;
-    private Map<Vertex<?>, Vertex<?>> edgeTo = new HashMap<Vertex<?>, Vertex<?>>();
-    private Stack<Vertex<?>> cycle = new Stack<Vertex<?>>();
+    private Set<Vertex<?>> marked;
+    private Map<Vertex<?>, Boolean> stack;
+    private Map<Vertex<?>, Vertex<?>> edgeTo;
+    private Stack<Vertex<?>> cycle;
     
     public DirectedCycleFinder(DiGraph graph) {
         this.graph = graph;
-        
-        stack = new HashMap<Vertex<?>, Boolean>();
-        
-        for (Vertex<?> v : graph.getVertices()) {
-            stack.put(v, false);
-        }
+        init();
     }
     
-    // FIXME: don't create it every time
+    // TODO: don't create it every time
     public DirectedCycleFinder find() {
-        cycle = new Stack<Vertex<?>>();
-        for (Vertex<?> v : graph.getVertices()) {
-            stack.put(v, false);
-        }
-        
-        marked = new HashSet<Vertex<?>>();
-        edgeTo = new HashMap<Vertex<?>, Vertex<?>>();
+        init();
         
         for (Vertex<?> v : graph.getVertices()) {
             if (!marked.contains(v)) {
@@ -75,5 +64,16 @@ public class DirectedCycleFinder {
         }
         
         stack.put(v, false);
+    }
+    
+    private void init() {
+        cycle = new Stack<Vertex<?>>();
+        stack = new HashMap<Vertex<?>, Boolean>();
+        for (Vertex<?> v : graph.getVertices()) {
+            stack.put(v, false);
+        }
+        
+        marked = new HashSet<Vertex<?>>();
+        edgeTo = new HashMap<Vertex<?>, Vertex<?>>();
     }
 }
