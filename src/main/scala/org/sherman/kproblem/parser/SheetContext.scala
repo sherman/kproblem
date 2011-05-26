@@ -7,8 +7,16 @@ import _root_.org.sherman.kproblem.util._;
 import _root_.org.sherman.kproblem.core._;
 import _root_.org.sherman.kproblem.util._;
 
+/**
+ *  Class is used by the reference evaluator.
+ *  See {@link ExpressionReference#eval ExpressionReference.eval}.
+ */
 class SheetContext(s:Sheet, cur:CellIndex) { ctx =>
     val sheet = s
+    
+    /**
+     * Every cell has unique index
+     */
     var currentCell = cur
     
     val refsGraph = new DiGraph()
