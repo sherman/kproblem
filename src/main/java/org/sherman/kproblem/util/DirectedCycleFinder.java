@@ -6,6 +6,10 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
 
+/**
+ * A simple cycle-finding algorithm.
+ * Based on dfs with additional stack of vertices of a cycle.
+ */
 public class DirectedCycleFinder {
     private final DiGraph graph;
     private Set<Vertex<?>> marked;

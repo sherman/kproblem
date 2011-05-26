@@ -5,6 +5,10 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Trivia directed graph implementation.
+ * Edges are represented by an adjacency list.
+ */
 public class DiGraph {
     private Set<Vertex<?>> vertices = new HashSet<Vertex<?>>();
     private Map<Vertex<?>, Set<Vertex<?>>> edges;
