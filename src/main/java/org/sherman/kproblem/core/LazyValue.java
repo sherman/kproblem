@@ -6,14 +6,17 @@ public class LazyValue extends EagerValue<Integer> {
     private boolean evaluated;
     
     private final Expression expression;
-    private final SheetContext sheetContext;
+    private final SheetContext sheetCtx;
+    private final CellIndex index;
     
     public LazyValue(
         Expression expression,
         SheetContext sheetCtx
     ) {
         this.expression = expression;
-        this.sheetContext = sheetCtx;
+        this.sheetCtx = sheetCtx;
+        // save original parser context
+        this.index = sheetCtx.currentCell();
     }
     
     @Override
@@ -25,11 +28,11 @@ public class LazyValue extends EagerValue<Integer> {
         return value;
     }
     
-    
-    
     private void evaluate() {
         assert null != expression;
         
-        value = expression.eval(sheetContext);
+        // restore original parser context
+        sheetCtx.currentCell_$eq(index);
+        value = expression.eval(sheetCtx);
     }
 }

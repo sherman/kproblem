@@ -7,6 +7,8 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.sherman.kproblem.util.Cells;
+import org.sherman.kproblem.util.DiGraph;
+import org.sherman.kproblem.util.DirectedCycleFinder;
 import org.sherman.kproblem.util.Vertex;
 
 public class SimpleSheet implements Sheet {
@@ -17,9 +19,6 @@ public class SimpleSheet implements Sheet {
     private final Map<CellIndex, Cell> cells =
         new HashMap<CellIndex, Cell>();
     
-    private final LinkedHashMap<Cell, Vertex> cellToVertex =
-        new LinkedHashMap<Cell, Vertex>();
-
     private final int rows;
     private final int columns;
     
@@ -47,8 +46,7 @@ public class SimpleSheet implements Sheet {
         
         //log.debug(cell.getExpression());
         cells.put(index, cell);
-        cellToVertex.put(cell, new Vertex(cellToVertex.size() + 1));
-        System.out.println(cellToVertex);
+        
         return this;
     }
     
@@ -84,9 +82,12 @@ public class SimpleSheet implements Sheet {
         Iterator<CellIndex> iter = cells.keySet().iterator();
         
         while (iter.hasNext()) {
+            CellIndex index = iter.next();
+            log.debug("Begin evaluation of " + index);
+            
             String value;
             try {
-                value = cells.get(iter.next()).getValue().toString() + " ";
+                value = cells.get(index).getValue().toString() + " ";
             } catch (IllegalArgumentException e) {
                 log.debug(e);
                 value = String.format("#%s ", e.getMessage());

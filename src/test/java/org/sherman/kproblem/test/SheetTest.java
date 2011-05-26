@@ -59,7 +59,7 @@ public class SheetTest {
         sheet.putCell(new CellIndex(1, "A"), new SimpleCell(Values.eager(42)));
     }
     
-    //@Test
+    @Test
     public void createSheetAndParse() {
         Sheet sheet = Sheets.buildFrom(
             new String[][] {

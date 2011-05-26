@@ -30,6 +30,7 @@ public class Sheets {
                 CellIndex index =
                     new CellIndex(i + 1, columnIndex.next().toString());
                 
+                // set current cell for parser context
                 sheetCtx.currentCell_$eq(index);
                 
                 Cell cell = new SimpleCell(

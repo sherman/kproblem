@@ -40,7 +40,10 @@ object Parser extends RegexParsers {
     
     def parse(in:String, sheetCtx:SheetContext):Value[_] = {
         this.parseAll(expression, in) match {
-            case Success(exp:Expression, _) => new LazyValue(exp, sheetCtx)
+            case Success(exp:Expression, _) => {
+                println (sheetCtx.currentCell + ":" + exp)
+                new LazyValue(exp, sheetCtx)
+            }
             case Success(exp:ExpressionString, _) => new EagerValue[String](exp eval sheetCtx);
             case e: NoSuccess => new EagerValue[String]("#Bad syntax: " + in);
         }
