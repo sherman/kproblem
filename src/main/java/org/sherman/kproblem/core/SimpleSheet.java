@@ -1,15 +1,11 @@
 package org.sherman.kproblem.core;
 
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.sherman.kproblem.util.Cells;
-import org.sherman.kproblem.util.DiGraph;
-import org.sherman.kproblem.util.DirectedCycleFinder;
-import org.sherman.kproblem.util.Vertex;
 
 public class SimpleSheet implements Sheet {
     private final Logger log = Logger.getLogger(SimpleSheet.class);
@@ -17,12 +13,10 @@ public class SimpleSheet implements Sheet {
     private BoundsCheck boundsCheckInstance = new BoundsCheck();
     
     private final Map<CellIndex, Cell> cells =
-        new HashMap<CellIndex, Cell>();
+        new LinkedHashMap<CellIndex, Cell>();
     
     private final int rows;
     private final int columns;
-    
-    private String evaulatedValue = "";
     
     public SimpleSheet(int rows, int columns) {
         this.rows = rows;
@@ -81,23 +75,34 @@ public class SimpleSheet implements Sheet {
     public String getValue() {
         Iterator<CellIndex> iter = cells.keySet().iterator();
         
+        int column = 0;
+        
+        StringBuilder sheetToString = new StringBuilder();
+        
         while (iter.hasNext()) {
+            if (column == 0) {
+                sheetToString.append("\r\n");
+                column = columns;
+            }
+            
             CellIndex index = iter.next();
             log.debug("Begin evaluation of " + index);
             
-            String value;
             try {
-                value = cells.get(index).getValue().toString() + " ";
+                sheetToString.
+                    append(cells.get(index).getValue().toString()).
+                    append(' ');
             } catch (IllegalArgumentException e) {
                 log.debug(e);
-                value = String.format("#%s ", e.getMessage());
+                sheetToString.append(
+                    String.format("#%s ", e.getMessage())
+                );
             }
             
-            evaulatedValue += value;
-                
+            column--;
         }
         
-        return evaulatedValue;
+        return sheetToString.toString();
     }
 
     @Override

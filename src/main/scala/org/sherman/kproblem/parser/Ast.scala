@@ -53,9 +53,7 @@ case class ExpressionReference(a: String) extends Expression {
                 sheetCtx addEdge new Vertex[CellIndex](toIndex)
             
             sheetCtx isCycleFound match {
-                case true => throw new IllegalArgumentException(
-                    "Cycle found."
-                );
+                case true => throw new IllegalArgumentException("Cycle");
                 case false => {
                     sheetCtx currentCell = toIndex
                     cell.getValue.getValue
@@ -64,7 +62,7 @@ case class ExpressionReference(a: String) extends Expression {
         } else if (cell.getValue.isInstanceOf[EagerValue[_]]) {
             throw new IllegalArgumentException(
                 String.format(
-                    "Reference to cell: {%s}, could not be resolved.",
+                    "Eval:{%s}",
                     toIndex.toString()
                 )
             );

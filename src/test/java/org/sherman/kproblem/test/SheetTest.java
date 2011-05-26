@@ -68,7 +68,11 @@ public class SheetTest {
             }
         );
         
-        assertEquals(sheet.getValue(), "240 15 yet another string 242 ");
+        assertEquals(
+            sheet.getValue(),
+            "\r\n240 15 " +
+            "\r\nyet another string 242 "
+        );
     }
     
     @Test
@@ -80,7 +84,11 @@ public class SheetTest {
             }
         );
         
-        assertEquals(sheet.getValue(), "#Reference to cell: {{1,B}}, could not be resolved. #Bad syntax: 5*3 yet another string #Bad syntax: =A1+'srting ");
+        assertEquals(
+            sheet.getValue(),
+            "\r\n#Eval:{{1,B}} #Parsing " +
+        	"\r\nyet another string #Parsing "
+        );
     }
     
     @Test
@@ -88,10 +96,16 @@ public class SheetTest {
         Sheet sheet = Sheets.buildFrom(
             new String[][] {
                 {"=17-1*B1", "=5*B2"},
-                {"=24-1", "=A1+2"}
+                {"=24-1", "=A1+2"},
+                {"'test", "=A3"},
             }
         );
         
-        assertEquals(sheet.getValue(), "#Cycle found. #Cycle found. 23 #Cycle found. ");
+        assertEquals(
+            sheet.getValue(),
+            "\r\n#Cycle #Cycle " +
+            "\r\n23 #Cycle " +
+            "\r\ntest #Eval:{{3,A}} "
+        );
     }
 }

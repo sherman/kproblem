@@ -16,6 +16,10 @@ public class SheetsTest {
             }
         );
         
-        assertEquals(sheet.getValue(), "4 2 striiiing 9 ");
+        assertEquals(
+            sheet.getValue(),
+            "\r\n4 2 " +
+            "\r\nstriiiing 9 "
+        );
     }
 }

@@ -42,7 +42,7 @@ object Parser extends RegexParsers {
         this.parseAll(expression, in) match {
             case Success(exp:Expression, _) => new LazyValue(exp, sheetCtx)
             case Success(exp:ExpressionString, _) => new EagerValue[String](exp eval sheetCtx);
-            case e: NoSuccess => new EagerValue[String]("#Bad syntax: " + in);
+            case e: NoSuccess => new EagerValue[String]("#Parsing");
         }
     }
     
