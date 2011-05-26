@@ -1,7 +1,7 @@
 package org.sherman.kproblem.core;
 
 public class Value<T> {
-    private T value;
+    private final T value;
     
     public Value(T value) {
         this.value = value;
