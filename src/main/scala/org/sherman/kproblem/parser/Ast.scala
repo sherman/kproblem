@@ -49,8 +49,7 @@ case class ExpressionReference(a: String) extends Expression {
             //println ("from " + currCell)
             //println ("to " + toIndex)
             
-            if (toIndex != currCell)
-                sheetCtx addEdge new Vertex[CellIndex](toIndex)
+            sheetCtx addEdge new Vertex[CellIndex](toIndex)
             
             sheetCtx isCycleFound match {
                 case true => throw new IllegalArgumentException("Cycle");
@@ -74,15 +73,5 @@ case class ExpressionReference(a: String) extends Expression {
                 )
             );
         }
-        /*cell.getValue match {
-            //case v:LazyValue => 
-            case v:LazyValue[_] => v getValue
-            case _ => throw new IllegalArgumentException(
-                String.format(
-                    "Unknown value type in reference expression %s",
-                    this.toString()
-                )
-            );
-        }*/
     }
 }    

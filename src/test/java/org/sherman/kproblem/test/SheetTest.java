@@ -108,4 +108,18 @@ public class SheetTest {
             "\r\ntest #Eval:{{3,A}} "
         );
     }
+    
+    @Test
+    public void createSheetWithSelfRecursiveReferencesAndParse() {
+        Sheet sheet = Sheets.buildFrom(
+            new String[][] {
+                {"=A1", "=B1"}
+            }
+        );
+        
+        assertEquals(
+            sheet.getValue(),
+            "\r\n#Cycle #Cycle "
+        );
+    }
 }
