@@ -82,4 +82,16 @@ public class SheetTest {
         
         assertEquals(sheet.getValue(), "#Reference to cell: {{1,B}}, could not be resolved. #Bad syntax: 5*3 yet another string #Bad syntax: =A1+'srting ");
     }
+    
+    @Test
+    public void createSheetWithRecursiveReferencesAndParse() {
+        Sheet sheet = Sheets.buildFrom(
+            new String[][] {
+                {"=17-1*B1", "=5*B2"},
+                {"=24-1", "=A1+2"}
+            }
+        );
+        
+        assertEquals(sheet.getValue(), "240 15 yet another string 242 ");
+    }
 }
