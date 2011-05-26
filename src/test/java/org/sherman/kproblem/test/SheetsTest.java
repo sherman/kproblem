@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 public class SheetsTest {
-    @Test(enabled=false)
+    @Test
     public void createFrom() {
         Sheet sheet = Sheets.buildFrom(
             new String[][] {
@@ -16,6 +16,6 @@ public class SheetsTest {
             }
         );
         
-        //assertEquals(sheet.getValue(), "4 2 striiiing 9 ");
+        assertEquals(sheet.getValue(), "4 2 striiiing 9 ");
     }
 }
