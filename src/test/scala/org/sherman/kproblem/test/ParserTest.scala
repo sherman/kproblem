@@ -24,7 +24,6 @@ class ParserTest {
             Array("16", "=10-2*2"),
             Array("12", "=10/2*2+2"),
             Array("22+1", "'22+1")
-            //Array(new ConstantValue[Int](42), "=A2") // FIXME
         )
     }
 }
