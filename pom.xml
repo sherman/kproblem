@@ -20,19 +20,19 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
-	
+
 	<repositories>
-	    <repository>
-	        <id>scala</id>
-	        <name>Scala Tools</name>
-	        <url>http://scala-tools.org/repo-releases/</url>
-	        <releases>
-	            <enabled>true</enabled>
-	        </releases>
-	        <snapshots>
-	            <enabled>false</enabled>
-	        </snapshots>
-	    </repository>
+		<repository>
+			<id>scala</id>
+			<name>Scala Tools</name>
+			<url>http://scala-tools.org/repo-releases/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
 	</repositories>
 
 	<dependencies>
@@ -43,7 +43,7 @@
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
@@ -51,26 +51,28 @@
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<dependency>
-    		<groupId>org.scala-lang</groupId>
-    		<artifactId>scala-library</artifactId>
-    		<version>2.9.0</version>
+			<groupId>org.scala-lang</groupId>
+			<artifactId>scala-library</artifactId>
+			<version>2.9.0</version>
 		</dependency>
-		
+
 	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
-        		<artifactId>build-helper-maven-plugin</artifactId>
-        		<version>1.5</version>
-        		<executions>
-        			<!-- sources -->
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.5</version>
+				<executions>
+					<!-- sources -->
 					<execution>
 						<id>add-source</id>
 						<phase>generate-sources</phase>
-						<goals><goal>add-source</goal></goals>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
 						<configuration>
 							<sources>
 								<source>src/main/java</source>
@@ -98,8 +100,8 @@
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
 				</configuration>
@@ -123,7 +125,7 @@
 					</includes>
 				</configuration>
 			</plugin>
-			
+
 			<!-- scala stuff -->
 			<plugin>
 				<groupId>org.scala-tools</groupId>
@@ -148,5 +150,61 @@
 				</executions>
 			</plugin>
 		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.codehaus.mojo
+										</groupId>
+										<artifactId>
+											build-helper-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.5,)
+										</versionRange>
+										<goals>
+											<goal>add-source</goal>
+											<goal>add-test-source</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.scala-tools
+										</groupId>
+										<artifactId>
+											maven-scala-plugin
+										</artifactId>
+										<versionRange>
+											[2.15.2,)
+										</versionRange>
+										<goals>
+											<goal>add-source</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 </project>
